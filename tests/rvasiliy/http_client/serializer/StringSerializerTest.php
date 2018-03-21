@@ -6,10 +6,8 @@
  * Time: 11:49
  */
 
-namespace rvasiliy\http_client;
+namespace rvasiliy\http_client\serializer;
 
-
-use rvasiliy\http_client\serializer\StringSerializer;
 
 class StringSerializerTest extends \PHPUnit_Framework_TestCase {
     public function test_isSerializerType() {
