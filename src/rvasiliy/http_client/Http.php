@@ -21,7 +21,7 @@ final class Http {
         return self::send(self::METHOD_POST, $url, $params);
     }
 
-    private static function send($method, $url, array $params = []) {
+    public static function send($method, $url, array $params = []) {
         $ch = curl_init();
 
         if (self::METHOD_GET === $method) {
