@@ -24,6 +24,6 @@ class StringSerializerTest extends \PHPUnit_Framework_TestCase {
         $expected = $rawResponse;
         $actual = $stringSerializer->deserialize($rawResponse);
 
-        $this->assertEquals($expected, $actual, 'Десериализация должна вернуть тот же самый объект');
+        $this->assertSame($expected, $actual, 'Десериализация должна вернуть тот же самый объект');
     }
 }
