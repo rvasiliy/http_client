@@ -29,4 +29,14 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertAttributeInstanceOf(Config::class, 'config', HttpClient::class);
     }
+
+    public function testSend_returnResponse() {
+        HttpClient::configure();
+
+        $httpClient = HttpClient::getInstance();
+
+        $actual = $httpClient->send(new Request());
+
+        $this->assertInstanceOf(Response::class, $actual);
+    }
 }
