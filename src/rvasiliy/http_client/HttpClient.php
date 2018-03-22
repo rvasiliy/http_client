@@ -31,6 +31,10 @@ class HttpClient {
     }
 
     public function getConfig() {
+        if (is_null(self::$config)) {
+            throw new \Exception('Объект не сконфигурирован. Запустите метод "configure" или "setConfig" с массивом конфигурации');
+        }
+
         return self::$config;
     }
 
@@ -41,10 +45,6 @@ class HttpClient {
     }
 
     public function send(Request $request, array $params = []) {
-        if (is_null(self::$config)) {
-            throw new \Exception('Объект не сконфигурирован. Запустите метод "configure" или "setConfig" с массивом конфигурации');
-        }
-
         if (!empty($params)) {
             $request->setParams($params);
         }
