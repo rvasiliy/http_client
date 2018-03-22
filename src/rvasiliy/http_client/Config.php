@@ -18,16 +18,10 @@ final class Config {
 
     private $baseUrl = '';
 
-    private $requestNamespace = '';
-
-    private $responseNamespace = '';
-
     private $serializer = null;
 
     public function __construct(array $config) {
         $this->baseUrl           = $config['baseUrl'];
-        $this->requestNamespace  = $config['requestNamespace'];
-        $this->responseNamespace = $config['responseNamespace'];
 
         $serializerClass    = $config['serializer']['class'];
         $serializerProperty = (isset($config['serializer']['property']) && is_array($config['serializer']['property']))

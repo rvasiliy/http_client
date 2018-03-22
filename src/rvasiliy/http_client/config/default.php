@@ -8,8 +8,6 @@
 
 return [
     'baseUrl' => '',
-    'requestNamespace' => 'rvasiliy\\http_client',
-    'responseNamespace' => 'rvasiliy\\http_client',
     'serializer' => [
         'class' => 'rvasiliy\\http_client\\serializer\\StringSerializer',
         'property' => [],
