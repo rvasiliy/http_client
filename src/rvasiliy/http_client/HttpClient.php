@@ -13,22 +13,17 @@ class HttpClient {
     private static $config;
     private static $instance;
 
-    private function __construct() {}
+    private function __construct() {
+    }
 
     public static function configure(array $config = []) {
-        if (!(self::$config instanceof Config)) {
-            $defaultConfig = require __DIR__ . '/config/default.php';
+        $defaultConfig = require __DIR__ . '/config/default.php';
 
-            self::$config = new Config(array_merge($defaultConfig, $config));
-        }
+        self::$config = new Config(array_merge($defaultConfig, $config));
     }
 
     public static function getInstance() {
-        if (!(self::$config instanceof Config)) {
-            throw new \Exception('Класс не сконфигурирован. Запустите метод "configure" с массивом конфигурации');
-        }
-
-        if (!(self::$instance instanceof HttpClient)) {
+        if (is_null(self::$instance)) {
             self::$instance = new HttpClient();
         }
 
@@ -39,7 +34,17 @@ class HttpClient {
         return self::$config;
     }
 
+    public function setConfig(array $config) {
+        self::configure($config);
+
+        return $this;
+    }
+
     public function send(Request $request, array $params = []) {
+        if (is_null(self::$config)) {
+            throw new \Exception('Объект не сконфигурирован. Запустите метод "configure" или "setConfig" с массивом конфигурации');
+        }
+
         if (!empty($params)) {
             $request->setParams($params);
         }
