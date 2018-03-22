@@ -15,7 +15,18 @@ class Request {
 
     protected $params = [];
 
-    protected $method = Http::METHOD_GET;
+    protected $method;
+
+    protected $response;
+
+    public function __construct() {
+        $this->init();
+    }
+
+    public function init() {
+        $this->setMethod(Http::METHOD_GET);
+        $this->setResponse(new Response());
+    }
 
     public function getUrl() {
         return $this->url;
@@ -47,16 +58,38 @@ class Request {
         return $this;
     }
 
-    public function execute() {
-        $rawResponse = Http::send($this->getMethod(), $this->getUrl(), $this->getParams());
-        $serializer = HttpClient::getInstance()
-            ->getConfig()
-            ->serializer;
+    public function getResponse() {
+        return $this->response;
+    }
 
-        $response = new Response();
-        $response->setRawResponse($rawResponse)
-            ->setSerializer($serializer);
+    public function setResponse(Response $response) {
+        $this->response = $response;
+
+        return $this;
+    }
+
+    public function execute() {
+        $rawResponse = Http::send(
+            $this->getMethod(),
+            $this->prepareUrl($this->getUrl()),
+            $this->getParams());
+
+        $response = $this->getResponse();
+        $response->setRawResponse($rawResponse);
 
         return $response;
+    }
+
+    private function prepareUrl($url) {
+        $baseUrl = HttpClient::getInstance()->getConfig()
+            ->baseUrl;
+
+        if ($baseUrl) {
+            $separator = (strpos($url, '/') === 0) ? '' : '/';
+
+            return $baseUrl . $separator . $url;
+        }
+
+        return $url;
     }
 }

@@ -15,6 +15,15 @@ class Response {
 
     protected $serializer;
 
+    public function __construct() {
+        $this->init();
+    }
+
+    public function init() {
+        $this->serializer = HttpClient::getInstance()->getConfig()
+            ->serializer;
+    }
+
     public function getRawResponse() {
         return $this->rawResponse;
     }
