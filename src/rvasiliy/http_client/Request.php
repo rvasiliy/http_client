@@ -11,12 +11,24 @@ namespace rvasiliy\http_client;
 
 class Request {
 
+    /**
+     * @var string
+     */
     protected $url = '';
 
+    /**
+     * @var array
+     */
     protected $params = [];
 
+    /**
+     * @var string
+     */
     protected $method;
 
+    /**
+     * @var Response
+     */
     protected $response;
 
     public function __construct() {
@@ -68,6 +80,11 @@ class Request {
         return $this;
     }
 
+    /**
+     * Выполнение запроса
+     *
+     * @return Response
+     */
     public function execute() {
         $rawResponse = Http::send(
             $this->getMethod(),

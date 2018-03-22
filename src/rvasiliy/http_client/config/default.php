@@ -7,7 +7,10 @@
  */
 
 return [
+    // базовый url
     'baseUrl' => '',
+
+    // Сериализатор по умолчанию
     'serializer' => [
         'class' => 'rvasiliy\\http_client\\serializer\\StringSerializer',
         'property' => [],

@@ -13,7 +13,7 @@ use rvasiliy\http_client\Serializer;
 use rvasiliy\http_client\utils\Getter;
 use rvasiliy\http_client\utils\Setter;
 
-class JsonSerializer implements Serializer {
+final class JsonSerializer implements Serializer {
 
     use Getter;
     use Setter;

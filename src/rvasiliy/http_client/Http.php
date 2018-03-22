@@ -9,18 +9,46 @@
 namespace rvasiliy\http_client;
 
 
+/**
+ * Отправка http запросов
+ */
 final class Http {
     const METHOD_GET = 'GET';
     const METHOD_POST = 'POST';
 
+    /**
+     * Отправка get запроса
+     *
+     * @param string $url Url
+     * @param array $params Параметры запроса
+     *
+     * @return string
+     */
     public static function get($url, array $params = []) {
         return self::send(self::METHOD_GET, $url, $params);
     }
 
+    /**
+     * Отправка post запроса
+     *
+     * @param string $url Url
+     * @param array $params Параметры запроса
+     *
+     * @return string
+     */
     public static function post($url, array $params = []) {
         return self::send(self::METHOD_POST, $url, $params);
     }
 
+    /**
+     * Отправка произвольного запроса
+     *
+     * @param string $method Метод запроса
+     * @param string $url Url
+     * @param array $params Параметры запроса
+     *
+     * @return string
+     */
     public static function send($method, $url, array $params = []) {
         $ch = curl_init();
 

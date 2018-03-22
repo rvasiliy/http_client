@@ -9,13 +9,27 @@
 namespace rvasiliy\http_client;
 
 
+/**
+ * Клиент
+ */
 class HttpClient {
+    /**
+     * Объект конфигурации
+     *
+     * @var Config
+     */
     private static $config;
+
     private static $instance;
 
     private function __construct() {
     }
 
+    /**
+     * Конфигурация клиента
+     *
+     * @param array $config Массив конфигурации
+     */
     public static function configure(array $config = []) {
         $defaultConfig = require __DIR__ . '/config/default.php';
 
@@ -44,6 +58,14 @@ class HttpClient {
         return $this;
     }
 
+    /**
+     * Отправка запроса
+     *
+     * @param Request $request Запрос
+     * @param array $params Параметры запроса
+     *
+     * @return Response
+     */
     public function send(Request $request, array $params = []) {
         if (!empty($params)) {
             $request->setParams($params);

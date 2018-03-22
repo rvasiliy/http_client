@@ -11,8 +11,18 @@ namespace rvasiliy\http_client;
 
 class Response {
 
+    /**
+     * Необработанный ответ сервера
+     *
+     * @var string
+     */
     protected $rawResponse = '';
 
+    /**
+     * Сериализатор
+     *
+     * @var Serializer
+     */
     protected $serializer;
 
     public function __construct() {
@@ -44,6 +54,12 @@ class Response {
         return $this;
     }
 
+    /**
+     * Возвращает ответ сервера,
+     * обработанный сериализатором
+     *
+     * @return mixed
+     */
     public function getData() {
         return $this
             ->getSerializer()
