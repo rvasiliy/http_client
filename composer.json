@@ -1,11 +1,17 @@
 {
     "name": "rvasiliy/http_client",
     "description": "Http client library",
+    "keywords": [
+        "http client"
+    ],
     "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/RVasiliy/http_client",
     "authors": [
         {
             "name": "RVasiliy",
-            "email": "vasiliy-mobile@yandex.ru"
+            "email": "vasiliy-mobile@yandex.ru",
+            "role": "Developer"
         }
     ],
     "require": {
