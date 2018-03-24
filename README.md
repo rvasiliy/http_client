@@ -1,10 +1,14 @@
 # HttpClient
 
-[![Build Status](https://travis-ci.org/RVasiliy/http_client.svg?branch=master)](https://travis-ci.org/RVasiliy/http_client)
+[![Build Status](https://travis-ci.org/RVasiliy/http_client.svg)](https://travis-ci.org/RVasiliy/http_client)
 
 ## Описание
 
 __HttpClient__ - библиотека для создания систем для отправки и получения запросов посредством _http_ протокола. Например _REST_ сервисов.
+
+## Зависимости
+
+* __PHP:__ версия 5.6 и выше
 
 ## Конфигурация
 
