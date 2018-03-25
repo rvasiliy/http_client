@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/rvasiliy/http_client.svg)](https://packagist.org/packages/rvasiliy/http_client)
 [![Total Downloads](https://img.shields.io/packagist/dt/rvasiliy/http_client.svg)](https://packagist.org/packages/rvasiliy/http_client)
-[![Build Status](https://img.shields.io/travis/RVasiliy/http_client.svg)](https://travis-ci.org/RVasiliy/http_client)
+[![Build Status](https://img.shields.io/travis/rvasiliy/http_client.svg)](https://travis-ci.org/rvasiliy/http_client)
 
 ## Описание
 
