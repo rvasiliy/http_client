@@ -1,6 +1,8 @@
 # HttpClient
 
-[![Build Status](https://travis-ci.org/RVasiliy/http_client.svg)](https://travis-ci.org/RVasiliy/http_client)
+[![Latest Stable Version](https://img.shields.io/packagist/v/rvasiliy/http_client.svg)](https://packagist.org/packages/rvasiliy/http_client)
+[![Total Downloads](https://img.shields.io/packagist/dt/rvasiliy/http_client.svg)](https://packagist.org/packages/rvasiliy/http_client)
+[![Build Status](https://img.shields.io/travis/RVasiliy/http_client.svg)](https://travis-ci.org/RVasiliy/http_client)
 
 ## Описание
 
@@ -79,6 +81,21 @@ __HttpClient__ - библиотека для создания систем дл�
 
     // отправляем запрос и получаем ответ
     $response = $client->send($request);
+```
+
+С версии _1.1.0_ объект запроса можно передавать в клиент с помощью сеттера.
+
+```php
+    // создаем объект запроса
+    $request = new \rvasiliy\http_client\Request();
+    $request->setUrl('http://example.com/status');
+    $request->setParams(['name' => 'Jon']);
+
+    // передаем запрос в клиент
+    $client->setRequest($request);
+
+    // отправляем запрос и получаем ответ
+    $response = $client->send();
 ```
 
 ## Получение данных

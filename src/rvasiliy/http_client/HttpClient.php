@@ -22,6 +22,13 @@ class HttpClient {
 
     private static $instance;
 
+    /**
+     * Объект запроса
+     *
+     * @var Request
+     */
+    private $request;
+
     private function __construct() {
     }
 
@@ -58,6 +65,16 @@ class HttpClient {
         return $this;
     }
 
+    public function getRequest() {
+        return $this->request;
+    }
+
+    public function setRequest(Request $request) {
+        $this->request = $request;
+
+        return $this;
+    }
+
     /**
      * Отправка запроса
      *
@@ -65,12 +82,29 @@ class HttpClient {
      * @param array $params Параметры запроса
      *
      * @return Response
+     * @throws \Exception
      */
-    public function send(Request $request, array $params = []) {
-        if (!empty($params)) {
-            $request->setParams($params);
+    public function send(Request $request = null, array $params = []) {
+        if ($request) {
+            $this->setRequestParams($request, $params);
+
+            return $request->execute();
         }
 
-        return $request->execute();
+        if (is_null($this->getRequest())) {
+            throw new \Exception('Не установлен объект запроса');
+        }
+
+        $this->setRequestParams($this->getRequest(), $params);
+
+        return $this->getRequest()->execute();
+    }
+
+    private function setRequestParams(Request $request, array $params) {
+        if (is_null($request)) {
+            return;
+        }
+
+        $request->setParams($params);
     }
 }

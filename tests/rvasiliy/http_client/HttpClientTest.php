@@ -39,4 +39,20 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertInstanceOf(Response::class, $actual);
     }
+
+    public function testSend_withoutRequest_throwException() {
+        $this->expectException('\\Exception');
+
+        HttpClient::configure([]);
+        HttpClient::getInstance()->send();
+    }
+
+    public function testSend_setRequest_returnResponse() {
+        HttpClient::configure([]);
+        HttpClient::getInstance()->setRequest(new Request());
+
+        $actual = HttpClient::getInstance()->send();
+
+        $this->assertInstanceOf(Response::class, $actual);
+    }
 }
