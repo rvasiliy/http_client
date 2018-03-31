@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "rvasiliy\\http_client\\": "src/rvasiliy/http_client"
+            "rvasiliy\\http_client\\": "src/"
         }
     }
 }
