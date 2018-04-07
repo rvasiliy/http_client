@@ -31,15 +31,6 @@ class Request {
      */
     protected $response;
 
-    public function __construct() {
-        $this->init();
-    }
-
-    public function init() {
-        $this->setMethod(Http::METHOD_GET);
-        $this->setResponse(new Response());
-    }
-
     public function getUrl() {
         return $this->url;
     }
@@ -61,7 +52,11 @@ class Request {
     }
 
     public function getMethod() {
-        return $this->method;
+        if ($this->method) {
+            return $this->method;
+        }
+
+        return Http::METHOD_GET;
     }
 
     public function setMethod($method) {
@@ -71,7 +66,11 @@ class Request {
     }
 
     public function getResponse() {
-        return $this->response;
+        if ($this->response) {
+            return $this->response;
+        }
+
+        return new Response();
     }
 
     public function setResponse(Response $response) {
