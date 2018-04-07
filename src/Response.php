@@ -40,6 +40,8 @@ class Response {
     public function getSerializer() {
         if ($this->serializer) {
             return $this->serializer;
+        } else if (HttpClient::getInstance()->getConfig()->serializer) {
+            return HttpClient::getInstance()->getConfig()->serializer;
         }
 
         return new StringSerializer();
