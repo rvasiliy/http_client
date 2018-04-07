@@ -9,6 +9,8 @@
 namespace rvasiliy\http_client;
 
 
+use rvasiliy\http_client\serializer\StringSerializer;
+
 class Response {
 
     /**
@@ -25,15 +27,6 @@ class Response {
      */
     protected $serializer;
 
-    public function __construct() {
-        $this->init();
-    }
-
-    public function init() {
-        $this->serializer = HttpClient::getInstance()->getConfig()
-            ->serializer;
-    }
-
     public function getRawResponse() {
         return $this->rawResponse;
     }
@@ -45,7 +38,11 @@ class Response {
     }
 
     public function getSerializer() {
-        return $this->serializer;
+        if ($this->serializer) {
+            return $this->serializer;
+        }
+
+        return new StringSerializer();
     }
 
     public function setSerializer(Serializer $serializer) {
