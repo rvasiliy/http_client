@@ -10,6 +10,5 @@ namespace rvasiliy\http_client;
 
 
 interface Serializer {
-    public function serialize($model);
     public function deserialize($rawResponse);
 }

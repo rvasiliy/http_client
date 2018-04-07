@@ -20,10 +20,6 @@ final class JsonSerializer implements Serializer {
 
     private $asArray = true;
 
-    public function serialize($model) {
-        // TODO: Implement serialize() method.
-    }
-
     public function deserialize($rawResponse) {
         return json_decode($rawResponse, $this->asArray);
     }
