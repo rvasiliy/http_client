@@ -10,10 +10,10 @@ namespace rvasiliy\http_client;
 
 
 class HttpClientTest extends \PHPUnit_Framework_TestCase {
-    public function testSend_withoutConfig_throwException() {
-        $this->expectException('\\Exception');
+    public function testSend_withoutConfig_returnResponse() {
+        $actual = HttpClient::getInstance()->send(new Request());
 
-        HttpClient::getInstance()->send(new Request());
+        $this->assertInstanceOf(Response::class, $actual);
     }
 
     public function testGetInstance_returnInstance() {

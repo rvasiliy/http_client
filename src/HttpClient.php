@@ -53,7 +53,7 @@ class HttpClient {
 
     public function getConfig() {
         if (is_null(self::$config)) {
-            throw new \Exception('Объект не сконфигурирован. Запустите метод "configure" или "setConfig" с массивом конфигурации');
+            self::configure();
         }
 
         return self::$config;

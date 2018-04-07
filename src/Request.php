@@ -88,7 +88,8 @@ class Request {
         $rawResponse = Http::send(
             $this->getMethod(),
             $this->prepareUrl($this->getUrl()),
-            $this->getParams());
+            $this->getParams()
+        );
 
         $response = $this->getResponse();
         $response->setRawResponse($rawResponse);
