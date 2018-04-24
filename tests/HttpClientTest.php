@@ -55,4 +55,18 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertInstanceOf(Response::class, $actual);
     }
+
+    public function testSend_mergeRequestParams() {
+        HttpClient::configure([]);
+
+        $request = new Request();
+        $request->setParams(['a' => 'a']);
+
+        HttpClient::getInstance()->send($request, ['b' => 'b']);
+
+        $expected = ['a' => 'a', 'b' => 'b'];
+        $actual = $request->getParams();
+
+        $this->assertArraySubset($expected, $actual);
+    }
 }

@@ -105,6 +105,6 @@ class HttpClient {
             return;
         }
 
-        $request->setParams($params);
+        $request->setParams(array_merge($request->getParams(), $params));
     }
 }
