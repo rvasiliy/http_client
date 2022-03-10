@@ -48,6 +48,7 @@ final class Http {
      * @param array $params Параметры запроса
      *
      * @return string
+     * @throws HttpResponseException
      */
     public static function send($method, $url, array $params = []) {
         $ch = curl_init();
@@ -68,7 +69,14 @@ final class Http {
 
         $rawResponse = curl_exec($ch);
 
+        $responseError = curl_errno($ch);
+        $errorMessage = curl_error($ch);
+
         curl_close($ch);
+
+        if (0 < $responseError) {
+            throw new HttpResponseException($errorMessage, $responseError);
+        }
 
         return $rawResponse;
     }
