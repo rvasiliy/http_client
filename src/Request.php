@@ -83,6 +83,7 @@ class Request {
      * Выполнение запроса
      *
      * @return Response
+     * @throws HttpResponseException
      */
     public function execute() {
         $rawResponse = Http::send(

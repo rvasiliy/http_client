@@ -83,6 +83,7 @@ class HttpClient {
      *
      * @return Response
      * @throws \Exception
+     * @throws HttpResponseException
      */
     public function send(Request $request = null, array $params = []) {
         if ($request) {
